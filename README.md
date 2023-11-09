@@ -17,6 +17,10 @@ npm i
 ```
 npm run dev
 ```
+8. Execute seed api in Postman
+```
+localhost:3000/api/seed
+```
 # Prisma commands
 ```
 npx prisma init
