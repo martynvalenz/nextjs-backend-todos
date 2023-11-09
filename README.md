@@ -9,11 +9,19 @@ docker-compose up -d
 ```
 npm i
 ```
-3. Run migrations
-4. Run seeds
-5. Run the project
+3. Rename .env.example to .env
+4. Add your database credentials to .env file
+5. Run migrations
+6. Run seeds
+7. Run the project
 ```
 npm run dev
+```
+# Prisma commands
+```
+npx prisma init
+npx prisma migrate dev --name init
+npx prisma generate
 ```
 
 # Production
