@@ -17,15 +17,15 @@ npm i
 ```
 npm run dev
 ```
-8. Execute seed api in Postman
-```
-localhost:3000/api/seed
-```
 # Prisma commands
 ```
 npx prisma init
 npx prisma migrate dev --name init
 npx prisma generate
+```
+8. Execute seed api in Postman
+```
+localhost:3000/api/seed
 ```
 
 # Production
