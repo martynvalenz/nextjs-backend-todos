@@ -27,7 +27,7 @@ npx prisma generate
 ```
 localhost:3000/api/seed
 ```
-
+* generate auth secret: https://generate-secret.vercel.app/32
 # Production
 
 # Staging

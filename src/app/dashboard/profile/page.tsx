@@ -14,6 +14,12 @@ export default function ProfilePage() {
     <div>
       <h1>Hello Page</h1>
       <hr/>
+
+      <div className="flex flex-col">
+        <span>{session?.user?.name ?? 'No Name, como el baresito'}</span>
+        <span>{session?.user?.email ?? 'No Email'}</span>
+        <span>{session?.user?.image ?? 'No image'}</span>
+      </div>
     </div>
   );
 }
