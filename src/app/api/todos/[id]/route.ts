@@ -1,3 +1,4 @@
+import { getUserSessionServer } from '@/auth/actions/auth.actions';
 import prisma from '@/lib/prisma';
 import { Todo } from '@prisma/client';
 import { NextResponse, NextRequest } from 'next/server';
@@ -10,9 +11,15 @@ interface Arguments {
 }
 
 const getTodo = async(id:string):Promise<Todo|null> => {
+  const user = await getUserSessionServer();
+  if(!user) NextResponse.json('Not authorized', {status:401});
   const todo = await prisma.todo.findFirst({
-    where:{id}
+    where:{id, userId: user?.id}
   });
+
+  if(todo?.userId === user?.id){
+    return null;
+  }
 
   return todo;
 }
@@ -44,6 +51,9 @@ const putSchema = yup.object({
 });
 
 export async function PUT(request: Request, {params}:Arguments) {
+  const user = await getUserSessionServer();
+  if(!user) NextResponse.json('Not authorized', {status:401});
+  
   try {
     const {id} = params;
     const todo = await getTodo(id);
@@ -55,7 +65,7 @@ export async function PUT(request: Request, {params}:Arguments) {
     const {complete, description} = await putSchema.validate(await request.json());
 
     const updatedTodo = await prisma.todo.update({
-      where:{id},
+      where:{id, userId: user?.id},
       data:{complete, description}
     });
 

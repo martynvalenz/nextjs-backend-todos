@@ -27,6 +27,11 @@ npx prisma generate
 ```
 localhost:3000/api/seed
 ```
+* El usuario y contraseña para el seed es:
+```
+username: test1@google.com
+password: 123456
+```
 * generate auth secret: https://generate-secret.vercel.app/32
 # Production
 
